@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artsan | Connect Local Mural Artists with Small Businesses</title>
+  <meta name="description" content="Artsan is a premium collaboration network connecting small businesses with local street and mural artists. Browse portfolios, commission custom designs, track progress, and process secure payments.">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- GreenSock Animation Platform (GSAP) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-mode">
+
+  <!-- Custom Cinematic Cursor -->
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true"></div>
+
+  <!-- Header Navigation -->
+  <header id="main-header" class="glass-nav">
+    <div class="nav-container">
+      <a href="#landing" class="logo-link" id="logo-home">
+        <span class="logo-icon">▲</span>
+        <span class="logo-text">ARTSAN</span>
+      </a>
+      
+      <!-- Primary Navigation Links -->
+      <nav id="nav-menu" class="nav-links" aria-label="Main Navigation">
+        <a href="#marketplace" class="nav-item" id="nav-link-marketplace">Browse Artists</a>
+        <a href="#commission" class="nav-item" id="nav-link-commission">Commission Mural</a>
+        <a href="#collab" class="nav-item" id="nav-link-collab">Active Projects</a>
+        <a href="#legal" class="nav-item" id="nav-link-legal">Legal & Compliance</a>
+      </nav>
+
+      <!-- View & Utility Toggles -->
+      <div class="nav-actions">
+        <!-- Dashboard Role Switcher Toggle -->
+        <div class="role-toggle-wrapper">
+          <span class="toggle-label">View Mode:</span>
+          <div class="role-toggle-group" id="role-toggle-group">
+            <button type="button" class="role-btn active" id="role-btn-business" data-role="business">Business</button>
+            <button type="button" class="role-btn" id="role-btn-artist" data-role="artist">Artist</button>
+          </div>
+        </div>
+        
+        <button type="button" class="cta-btn-nav" id="btn-quick-commission">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport Container (SPA Content Router) -->
+  <main id="app-viewport">
+    
+    <!-- 1. LANDING & CINEMATIC PARALLAX SECTION -->
+    <section id="section-landing" class="app-screen active">
+      <!-- 2.5D Cinematic Parallax Header -->
+      <div class="scene" data-scene="hero" id="hero-scene">
+        
+        <!-- Depth 0: Base Dark Ambient Atmosphere -->
+        <div class="layer depth-0" data-depth="0" aria-hidden="true">
+          <div class="ambient-glow bg-gradient-glow"></div>
+        </div>
+        
+        <!-- Depth 1: Abstract Ambient Light Flares -->
+        <div class="layer depth-1" data-depth="1" aria-hidden="true">
+          <div class="atmospheric-orb orb-purple"></div>
+          <div class="atmospheric-orb orb-peach"></div>
+        </div>
+        
+        <!-- Depth 2: Midground Storefront Canvas Layout -->
+        <div class="layer depth-2" data-depth="2" aria-hidden="true">
+          <div class="canvas-brick-backdrop"></div>
+        </div>
+        
+        <!-- Depth 3: Main Artwork Element (Assign Depth 3 by default to hero product) -->
+        <div class="layer depth-3" data-depth="3">
+          <div class="hero-artwork-frame float-loop">
+            <img class="hero-mural-image" src="assets/mural_realism.png" alt="Tiger storefront mural illustration demonstrating dynamic storefront painting" id="hero-mural-showcase">
+            <div class="canvas-reflection-overlay"></div>
+          </div>
+        </div>
+        
+        <!-- Depth 4: Text Content Overlay -->
+        <div class="layer depth-4" data-depth="4">
+          <div class="hero-text-container">
+            <span class="hero-tagline">VIBRANT STOREFRONT INSTALLATIONS</span>
+            <h1 class="hero-title" id="main-hero-title">
+              <span class="title-word animate-fade">Transform</span>
+              <span class="title-word animate-fade">Your</span>
+              <span class="title-word animate-fade text-gradient">Storefront</span>
+              <span class="title-word animate-fade">Weekly.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Connect with curated local street artists to turn your shop walls, windows, and brick facades into dynamic public canvases that draw customers and define neighborhoods.
+            </p>
+            <div class="hero-actions">
+              <a href="#marketplace" class="btn-primary" id="hero-btn-explore">Explore Artists</a>
+              <a href="#commission" class="btn-secondary" id="hero-btn-commission">Start Commission</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Depth 5: Foreground Dust & Floating Light Particles -->
+        <div class="layer depth-5" data-depth="5" aria-hidden="true">
+          <div class="floating-particle p-1"></div>
+          <div class="floating-particle p-2"></div>
+          <div class="floating-particle p-3"></div>
+        </div>
+
+      </div>
+
+      <!-- Feature Highlight / Intro Cards -->
+      <section class="intro-grid-section">
+        <div class="section-title-wrap text-center">
+          <h2 class="section-title-heading">Seamless Collaboration. Premium Output.</h2>
+          <p class="section-subtitle-text">Everything needed to commission, approve, and install statement art, built for fast-paced modern storefronts.</p>
+        </div>
+        
+        <div class="feature-grid">
+          <div class="feature-card glass-card">
+            <div class="feature-icon">✨</div>
+            <h3>Curated Artist Pools</h3>
+            <p>Direct access to verified local mural artists specializing in street art, botanical, geometric, and hyper-realism murals.</p>
+          </div>
+          <div class="feature-card glass-card">
+            <div class="feature-icon">💳</div>
+            <h3>Secure Milestone Billing</h3>
+            <p>Funds are held securely and released automatically when installation milestones are completed and approved.</p>
+          </div>
+          <div class="feature-card glass-card">
+            <div class="feature-icon">⚖️</div>
+            <h3>Hassle-Free Permitting</h3>
+            <p>Our automated compliance checker reviews local public art permit requirements, licensing rules, and easement laws.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+
+    <!-- 2. MARKETPLACE GALLERY VIEW -->
+    <section id="section-marketplace" class="app-screen">
+      <div class="container py-5">
+        <div class="marketplace-header-bar">
+          <div>
+            <h2 class="marketplace-title">Discover Local Artists</h2>
+            <p class="marketplace-desc">Find painters, street artists, and mural designers near your business.</p>
+          </div>
+          
+          <!-- Search & Filter Controls -->
+          <div class="gallery-controls">
+            <input type="text" id="marketplace-search-input" placeholder="Search by name, city or style..." class="search-field">
+            <select id="marketplace-style-filter" class="filter-dropdown">
+              <option value="all">All Styles</option>
+              <option value="Realism">Realism</option>
+              <option value="Abstract">Abstract</option>
+              <option value="Botanical">Botanical</option>
+              <option value="Graffiti">Graffiti/Street</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Dynamic Artist Grid -->
+        <div class="artist-grid" id="artist-grid-container">
+          <!-- Rendered dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 3. MURAL CREATOR / COMMISSION BUILDER -->
+    <section id="section-commission" class="app-screen">
+      <div class="container py-5 max-w-lg">
+        <div class="form-header text-center">
+          <h2 class="form-title-heading">Commission a Custom Mural</h2>
+          <p class="form-subtitle-desc">Outline your business details, facade dimensions, and theme ideas to receive curated bids.</p>
+        </div>
+        
+        <div class="glass-card form-container">
+          <form id="commission-form" novalidate>
+            <div class="form-group-grid">
+              <div class="form-group">
+                <label for="comm-business-name">Business Name</label>
+                <input type="text" id="comm-business-name" class="form-input" required placeholder="e.g., The Botanist Cafe">
+              </div>
+              <div class="form-group">
+                <label for="comm-location">Business Address</label>
+                <input type="text" id="comm-location" class="form-input" required placeholder="e.g., 452 Broadway, New York NY">
+              </div>
+            </div>
+            
+            <div class="form-group-grid">
+              <div class="form-group">
+                <label for="comm-mural-type">Wall/Facade Type</label>
+                <select id="comm-mural-type" class="form-select">
+                  <option value="brick">Exterior Brick Facade</option>
+                  <option value="concrete">Concrete storefront</option>
+                  <option value="window">Storefront Glass/Window Paint (Temporary)</option>
+                  <option value="interior">Interior Cafe/Retail Wall</option>
+                  <option value="wood">Wood/Chalkboard surface (Weekly Refresh)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="comm-dimensions">Dimensions (Height x Width in ft)</label>
+                <input type="text" id="comm-dimensions" class="form-input" required placeholder="e.g., 10ft x 15ft">
+              </div>
+            </div>
+            
+            <div class="form-group-grid">
+              <div class="form-group">
+                <label for="comm-budget">Estimated Budget ($ USD)</label>
+                <input type="number" id="comm-budget" class="form-input" required min="200" placeholder="e.g., 1200" value="1200">
+              </div>
+              <div class="form-group">
+                <label for="comm-timeline">Target Date for Installation</label>
+                <input type="date" id="comm-timeline" class="form-input" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="comm-style-pref">Preferred Style</label>
+              <select id="comm-style-pref" class="form-select">
+                <option value="Realism">Hyper-Realism & Portraits</option>
+                <option value="Abstract">Abstract & Geometric shapes</option>
+                <option value="Botanical">Botanical & Organic florals</option>
+                <option value="Graffiti">Urban Street Art & Letters</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="comm-description">Theme Description & Special Requests</label>
+              <textarea id="comm-description" class="form-textarea" required rows="4" placeholder="Describe your store aesthetic, colors you love/avoid, branding ideas, and what you want the mural to convey..."></textarea>
+            </div>
+            
+            <div class="form-submit-wrap">
+              <button type="submit" class="btn-primary w-full" id="btn-submit-commission">Publish Commission Request</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 4. ACTIVE COLLABORATION & PROGRESS SPACE -->
+    <section id="section-collab" class="app-screen">
+      <div class="container py-5">
+        <div class="collab-header-wrap">
+          <div>
+            <h2 class="collab-title">Mural Commissions Workspace</h2>
+            <p class="collab-desc">Manage commissions, upload photo proofs, review drafts, and track milestones.</p>
+          </div>
+          <div class="collab-stats-badge glass-card" id="collab-overview-badge">
+            <!-- Rendered dynamic totals -->
+          </div>
+        </div>
+        
+        <!-- Split Dashboard: Project Selector + Active Project Workspace -->
+        <div class="collab-layout-grid">
+          
+          <!-- Left: Commissions List -->
+          <div class="collab-sidebar-panel glass-card">
+            <h3 class="panel-subtitle">All Projects</h3>
+            <div class="project-list" id="project-list-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+          
+          <!-- Right: Active Project Panel -->
+          <div class="collab-main-panel glass-card" id="active-project-workspace">
+            <div class="empty-state-workspace text-center">
+              <span class="empty-icon">🎨</span>
+              <h3>No Project Selected</h3>
+              <p>Please select a project from the sidebar to view details, update progress, manage payments, or schedule installations.</p>
+            </div>
+            <!-- Dynamic project dashboard injects here -->
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 5. LEGAL & COMPLIANCE CENTER -->
+    <section id="section-legal" class="app-screen">
+      <div class="container py-5">
+        <div class="section-title-wrap">
+          <h2 class="legal-heading">Legal & Municipal Compliance Hub</h2>
+          <p class="legal-subheading">Public art permit checks, copyright release generators, and safety agreements.</p>
+        </div>
+        
+        <div class="legal-grid">
+          <!-- Compliance Checker -->
+          <div class="legal-card glass-card">
+            <h3>Municipal Public Art Checker</h3>
+            <p class="text-secondary mb-3">Ensure your mural does not violate local zoning codes, historic preservation laws, or landmark regulations.</p>
+            
+            <div class="compliance-checker-tool">
+              <div class="form-group">
+                <label for="legal-city-selector">Select Municipality</label>
+                <select id="legal-city-selector" class="form-select">
+                  <option value="sf">San Francisco, CA (SFAC Rules)</option>
+                  <option value="nyc">New York City, NY (LPC & Dot Rules)</option>
+                  <option value="chicago">Chicago, IL (Public Art Ordinance)</option>
+                  <option value="generic">Standard US Municipal Zoning</option>
+                </select>
+              </div>
+              
+              <div class="checker-results" id="city-compliance-rules">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contract Release Generator -->
+          <div class="legal-card glass-card">
+            <h3>Automated Mural Release Agreement</h3>
+            <p class="text-secondary mb-3">Generate a standard legal contract detailing copyright ownership, mural preservation terms, and licensing permissions.</p>
+            
+            <div class="contract-form">
+              <div class="form-group-grid">
+                <div class="form-group">
+                  <label for="legal-artist-name">Artist Full Name</label>
+                  <input type="text" id="legal-artist-name" class="form-input" placeholder="e.g. Jessica Davis">
+                </div>
+                <div class="form-group">
+                  <label for="legal-owner-name">Property Owner/Business</label>
+                  <input type="text" id="legal-owner-name" class="form-input" placeholder="e.g. Acme Cafes LLC">
+                </div>
+              </div>
+              
+              <button type="button" class="btn-secondary w-full mb-3" id="btn-generate-contract">Generate Legal Draft</button>
+              
+              <div class="contract-preview-box" id="contract-text-preview" readonly>
+                Fill out the names above and click Generate to produce the agreement text...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- STRIPE PAYMENT CHECKOUT MODAL OVERLAY -->
+  <div id="stripe-checkout-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="stripe-modal-title">
+    <div class="stripe-modal-card glass-card">
+      <button type="button" class="modal-close-btn" id="btn-close-stripe" aria-label="Close Checkout Window">&times;</button>
+      
+      <!-- Stripe Branding -->
+      <div class="stripe-header">
+        <div class="stripe-logo">stripe</div>
+        <span class="payment-title" id="stripe-modal-title">Secure Checkout</span>
+      </div>
+      
+      <div class="stripe-body">
+        <!-- Project Summary -->
+        <div class="payment-summary-box">
+          <span class="label">Project Title:</span>
+          <span class="value" id="stripe-summary-title">Mural Commission Deposit</span>
+          
+          <div class="summary-line mt-2">
+            <span class="label">Total Amount:</span>
+            <span class="value amount-tag" id="stripe-summary-amount">$600.00</span>
+          </div>
+        </div>
+        
+        <!-- Card Details Form -->
+        <form id="stripe-card-form" class="mt-4">
+          <div class="form-group">
+            <label for="stripe-card-number">Card Number</label>
+            <div class="input-icon-wrapper">
+              <input type="text" id="stripe-card-number" class="stripe-input card-num" required maxlength="19" placeholder="4242 4242 4242 4242">
+              <span class="card-brand-icon" id="stripe-brand-icon">💳</span>
+            </div>
+            <div class="input-helper-note">Use <span class="test-card">4242 ... 4242</span> for successful payment. Use other cards to trigger declines or authentications.</div>
+          </div>
+          
+          <div class="form-group-grid mt-3">
+            <div class="form-group">
+              <label for="stripe-card-expiry">Expiration</label>
+              <input type="text" id="stripe-card-expiry" class="stripe-input" required maxlength="5" placeholder="MM/YY">
+            </div>
+            <div class="form-group">
+              <label for="stripe-card-cvc">CVC</label>
+              <input type="text" id="stripe-card-cvc" class="stripe-input" required maxlength="4" placeholder="CVC">
+            </div>
+          </div>
+          
+          <div class="stripe-alerts-container" id="stripe-error-message"></div>
+          
+          <button type="submit" class="stripe-pay-btn mt-4" id="stripe-submit-button">
+            <span class="btn-text" id="stripe-pay-btn-text">Pay $600.00</span>
+            <div class="stripe-spinner hidden" id="stripe-spinner"></div>
+          </button>
+        </form>
+      </div>
+      
+      <!-- Stripe Footer -->
+      <div class="stripe-footer">
+        🔒 Secured by Stripe | Powered by Artsan
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 3D SECURE MOCK AUTHENTICATION OVERLAY -->
+  <div id="stripe-3ds-overlay" class="modal-overlay sub-modal hidden" aria-hidden="true" role="dialog">
+    <div class="stripe-3ds-box glass-card text-center">
+      <h3>Verified by Visa / Mastercard Identity Check</h3>
+      <p class="mb-4">To secure this transaction, please click Approve to complete the simulated 3D Secure verification.</p>
+      
+      <div class="flex-btn-gap justify-center">
+        <button type="button" class="btn-primary px-4" id="btn-3ds-approve">Approve Transaction</button>
+        <button type="button" class="btn-secondary px-4" id="btn-3ds-cancel">Decline/Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ALERT NOTIFICATION BANNER -->
+  <div id="notification-banner" class="notification-toast" role="alert" aria-live="assertive">
+    <span id="notification-message">Commission successfully published!</span>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="index.js"></script>
+</body>
+</html>
