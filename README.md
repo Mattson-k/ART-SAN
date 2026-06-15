@@ -1,0 +1,1 @@
+the platform will cater to small businesses, including cafes, restaurants, and retail stores, seeking to refresh their storefronts with unique, artist-created murals on a weekly basis. Local artists will be able to showcase their talents, gain exposure, and earn income through commissioned murals.
